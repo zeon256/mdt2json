@@ -23,7 +23,8 @@
   },
   "exclude": [
     "tsconfig.json",
-    "tsconfig-build.json"
+    "tsconfig-build.json",
+    "tests"
   ],
   "ts-node": {
     "esm": true

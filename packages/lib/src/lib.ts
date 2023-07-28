@@ -12,8 +12,8 @@ export interface RemarkNode extends Node {
 }
 
 export enum JsonLayout {
-	AoS = 0,
-	SoA = 1,
+	AoS = "AoS",
+	SoA = "SoA",
 }
 
 export type TranspilerOpts = {

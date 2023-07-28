@@ -1,0 +1,17 @@
+{
+  "name": "mdtable2json-cli",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/main.js",
+  "type": "module",
+  "scripts": {
+    "cleanBuild": "rm -rf ./dist && tsc",
+    "run": "node ./dist/main.js"
+  },
+  "dependencies": {
+    "commander": "^11.0.0",
+    "mdtable2json": "*"
+  },
+  "author": "Budi Syahiddin",
+  "license": "MIT"
+}
