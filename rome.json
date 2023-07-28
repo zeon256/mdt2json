@@ -1,0 +1,26 @@
+{
+	"$schema": "https://docs.rome.tools/schemas/12.1.0/schema.json",
+	"organizeImports": {
+		"enabled": false
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"suspicious": {
+				"noExplicitAny": "warn"
+			},
+			"performance": {
+				"all": true
+			}
+		}
+	},
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "tab",
+    "indentSize": 4,
+    "lineWidth": 120,
+    "ignore": []
+  }
+}
