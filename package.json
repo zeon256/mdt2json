@@ -7,6 +7,11 @@
     "packages/cli",
     "packages/lib"
   ],
+  "scripts": {
+    "build:cli": "npm run cleanBuild -w packages/cli",
+    "build:lib": "npm run cleanBuild -w packages/lib",
+    "test:lib": "npm run test -w packages/lib"
+  },
   "author": "Budi Syahiddin",
   "license": "MIT"
 }
