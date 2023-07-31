@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: release-artifact
-          paths: |
+          path: |
             package/cli/dist
             package/lib/dist
             package.json
