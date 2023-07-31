@@ -44,9 +44,11 @@ jobs:
         with:
           name: release-artifact
           path: |
-            package/cli/dist
-            package/lib/dist
+            packages/cli/dist
+            packages/lib/dist
+            package.lock.json
             package.json
+            node_modules
 
       - name: Publish CLI to NPM
         # Only run if the commit is tagged with release/v<version>
