@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { JsonLayout, MarkdownTable2Json } from "mdtable2json/dist/lib.js";
+import { JsonLayout, MarkdownTable2Json } from "mdt2json-ts/dist/lib.js";
 import fs from "fs";
 
 (() => {

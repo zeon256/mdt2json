@@ -1,5 +1,5 @@
 {
-  "name": "mdtable2json-cli",
+  "name": "mdt2json-cli",
   "version": "0.1.0",
   "description": "Markdown Table to Minified JSON Transpiler CLI tool",
   "type": "module",
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "commander": "^11.0.0",
-    "mdtable2json": "*"
+    "mdt2json-ts": "*"
   },
   "author": "Budi Syahiddin",
   "license": "MIT"

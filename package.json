@@ -1,5 +1,5 @@
 {
-  "name": "mdtable2json",
+  "name": "mdt2json",
   "version": "0.1.0",
   "description": "Markdown Table to Minified JSON Transpiler",
   "main": "index.js",
