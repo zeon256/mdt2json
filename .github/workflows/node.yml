@@ -49,6 +49,18 @@ jobs:
             package.lock.json
             package.json
             node_modules
+      
+      - name: Publish CLI to NPM (dry run)
+        # Only run if the commit is tagged with release/v<version>
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: cd package/cli && npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && npm publish --dry-run
+
+      - name: Publish Library to NPM (dry run)
+        # Only run if the commit is tagged with release/v<version>
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}          
+        run: cd package/lib && npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && npm publish --dry-run
 
       - name: Publish CLI to NPM
         # Only run if the commit is tagged with release/v<version>
