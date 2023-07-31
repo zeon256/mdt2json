@@ -29,6 +29,7 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        
         # need to build library first 
       - name: Build Lib project
         run: npm run build:lib
@@ -49,17 +50,24 @@ jobs:
             package.lock.json
             package.json
       
+      - name: Publish Library to NPM (dry run)
+        # Only run if the commit is tagged with release/v<version>
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}          
+        run: npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && cd packages/lib && npm publish --dry-run
+      
       - name: Publish CLI to NPM (dry run)
         # Only run if the commit is tagged with release/v<version>
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && cd packages/cli && npm publish --dry-run
 
-      - name: Publish Library to NPM (dry run)
+      - name: Publish Library to NPM
         # Only run if the commit is tagged with release/v<version>
+        if: startsWith(github.ref, 'refs/tags/release/v')
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}          
-        run: npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && cd packages/lib && npm publish --dry-run
+        run: npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && cd packages/lib && npm publish
 
       - name: Publish CLI to NPM
         # Only run if the commit is tagged with release/v<version>
@@ -68,9 +76,3 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && cd packages/cli && npm publish
 
-      - name: Publish Library to NPM
-        # Only run if the commit is tagged with release/v<version>
-        if: startsWith(github.ref, 'refs/tags/release/v')
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}          
-        run: npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && cd packages/lib && npm publish
