@@ -2,7 +2,14 @@
   "name": "mdtable2json",
   "version": "0.1.0",
   "description": "Markdown Table to Minified JSON Transpiler",
-  "main": "./dist/bin.js",
+  "main": "./dist/lib.js",
+  "files": ["dist", "src", "tests"],
+  "dist": {
+    "type": "module",
+    "main": "./dist/lib.js",
+    "module": "./dist/lib.js",
+    "types": "./dist/lib.d.ts"
+  },
   "type": "module",
   "scripts": {
     "cleanBuild": "rm -rf ./dist && tsc",

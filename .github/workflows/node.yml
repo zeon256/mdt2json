@@ -1,0 +1,78 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'release/v*' # Trigger the workflow when a commit is tagged with release/v<version>
+  pull_request:
+    branches:
+      - main
+
+env:
+  EXPIRY_DAYS: 1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm ci
+        
+        # need to build library first 
+      - name: Build Lib project
+        run: npm run build:lib
+
+      - name: Build CLI project
+        run: npm run build:cli
+
+      - name: Run Library tests
+        run: npm run test:lib
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-artifact
+          path: |
+            packages/cli/dist
+            packages/lib/dist
+            package.lock.json
+            package.json
+      
+      - name: Publish Library to NPM (dry run)
+        # Only run if the commit is tagged with release/v<version>
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}          
+        run: npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && cd packages/lib && npm publish --dry-run
+      
+      - name: Publish CLI to NPM (dry run)
+        # Only run if the commit is tagged with release/v<version>
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && cd packages/cli && npm publish --dry-run
+
+      - name: Publish Library to NPM
+        # Only run if the commit is tagged with release/v<version>
+        if: startsWith(github.ref, 'refs/tags/release/v')
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}          
+        run: npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && cd packages/lib && npm publish
+
+      - name: Publish CLI to NPM
+        # Only run if the commit is tagged with release/v<version>
+        if: startsWith(github.ref, 'refs/tags/release/v')
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && cd packages/cli && npm publish
+

@@ -38,3 +38,12 @@ const markdownString = `your_markdown_string_here`;
 const transpiler     = new MarkdownTable2Json({markdownString, layout: JsonLayout.AoS , minify: true });
 console.log(transpiler.transform());
 ```
+
+## Library Internals
+This library works by parsing the markdown and getting the AST (Abstract Syntax Tree) of the markdown file. The AST is then traversed to find the tables in the markdown file. Once the tables are found, the tables are converted to JSON and returned.
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+This project and documentation is licensed under the [MIT License](./LICENSE)
