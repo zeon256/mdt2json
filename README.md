@@ -8,17 +8,17 @@
 
 ## Installation (CLI)
 ```bash
-npm install -g mdtable2json-cli
+npm install -g mdt2json-cli
 ```
 
 ## Installation (Library)
 ```bash
-npm install mdtable2json
+npm install mdt2json-ts
 ```
 
 ## CLI Usage
 ```bash
-Usage: mdtable2json-cli [options]
+Usage: mdt2json-cli-cli [options]
 
 Options:
   -f, --file <file>         file to transpile
@@ -32,7 +32,7 @@ Options:
 
 ## Library Usage
 ```typescript
-import { MarkdownTable2Json, JsonLayout } from 'mdtable2json';
+import { MarkdownTable2Json, JsonLayout } from 'mdt2json-ts';
 
 const markdownString = `your_markdown_string_here`;
 const transpiler     = new MarkdownTable2Json({markdownString, layout: JsonLayout.AoS , minify: true });
