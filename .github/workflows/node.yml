@@ -12,7 +12,6 @@ on:
 
 env:
   EXPIRY_DAYS: 1
-  NODE_VERSION: 20
 
 jobs:
   build:
@@ -25,7 +24,7 @@ jobs:
       - name: Set up Node.js environment
         uses: actions/setup-node@v3
         with:
-          node-version: $NODE_VERSION
+          node-version: latest
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
