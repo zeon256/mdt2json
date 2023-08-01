@@ -6,19 +6,14 @@
 - Command-line interface (CLI) tool for easy conversion
 - Multiple knobs available for customizing the conversion process. Don't need to minify? No problem! Prefer Array of Structures (AoS) over Structure of Arrays (SoA)? We got you covered!
 
-## Installation (CLI)
+## Installation (CLI and Library)
 ```bash
-npm install -g mdt2json-cli
-```
-
-## Installation (Library)
-```bash
-npm install mdt2json-ts
+npm install -g mdt2json
 ```
 
 ## CLI Usage
 ```bash
-Usage: mdt2json-cli-cli [options]
+Usage: mdt2json [options]
 
 Options:
   -f, --file <file>         file to transpile
@@ -32,7 +27,7 @@ Options:
 
 ## Library Usage
 ```typescript
-import { MarkdownTable2Json, JsonLayout } from 'mdt2json-ts';
+import { MarkdownTable2Json, JsonLayout } from 'mdt2json';
 
 const markdownString = `your_markdown_string_here`;
 const transpiler     = new MarkdownTable2Json({markdownString, layout: JsonLayout.AoS , minify: true });

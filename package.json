@@ -1,14 +1,41 @@
 {
   "name": "mdt2json",
-  "version": "0.1.0",
-  "description": "Markdown Table to Minified JSON Transpiler",
-  "main": "index.js",
+  "version": "0.2.0",
+  "description": "Configurable Markdown Table to Minified JSON Transpiler",
+  "main": "./dist/lib/lib.js",
+  "types": "./dist/lib/lib.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/lib/lib.d.ts",
+      "default": "./dist/lib/lib.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "mdt2json": "./dist/cli/main.js",
+    "shebangify": "./shebangify.js" 
+  },
+  "files": [
+    "dist"
+  ],
+  "readme": "README.md",
+  "keywords": [
+    "markdown",
+    "table",
+    "json",
+    "transpiler"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zeon256/mdtable2json"
+  },
   "workspaces": [
     "packages/cli",
     "packages/lib"
   ],
   "scripts": {
-    "build:cli": "npm run cleanBuild -w packages/cli",
+    "build:cli": "npm run cleanBuild -w packages/cli && node ./shebangify.cjs ./dist/cli/main.js",
     "build:lib": "npm run cleanBuild -w packages/lib",
     "test:lib": "npm run test -w packages/lib"
   },

@@ -1,16 +1,14 @@
 {
   "name": "mdt2json-cli",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Markdown Table to Minified JSON Transpiler CLI tool",
   "type": "module",
-  "main": "./dist/main.js",
-  "bin": "./dist/main.js",
   "scripts": {
-    "cleanBuild": "rm -rf ./dist && tsc && chmod +x ./dist/main.js && ../../shebangify ./dist/main.js"
+    "cleanBuild": "rm -rf ../../dist/cli && tsc && chmod +x ../../dist/cli/main.js"
   },
   "dependencies": {
     "commander": "^11.0.0",
-    "mdt2json-ts": "*"
+    "mdt2json": "*"
   },
   "author": "Budi Syahiddin",
   "license": "MIT"
