@@ -32,7 +32,7 @@ jobs:
         
         # need to build library first 
       - name: Build Lib project
-        run: npm run build:lib
+        run: npm run build:libInternal && npm run build:lib
 
       - name: Build CLI project
         run: npm run build:cli

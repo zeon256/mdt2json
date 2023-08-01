@@ -37,6 +37,7 @@
   "scripts": {
     "build:cli": "npm run cleanBuild -w packages/cli && node ./shebangify.cjs ./dist/cli/main.js",
     "build:lib": "npm run cleanBuild -w packages/lib",
+    "build:libInternal": "npm run cleanBuild:internal -w packages/lib",
     "test:lib": "npm run test -w packages/lib"
   },
   "author": "Budi Syahiddin",

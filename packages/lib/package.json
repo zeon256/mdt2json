@@ -19,7 +19,7 @@
   "type": "module",
   "scripts": {
     "cleanBuild": "rm -rf ../../dist/lib && tsc",
-    "cleanBuild:internal": "rm -rf ./dist/lib && tsc --outDir ./dist",
+    "cleanBuild:internal": "rm -rf ./dist && tsc --outDir ./dist",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --verbose  --config jest-unit.config.json"
   },
   "author": "Budi Syahiddin",
