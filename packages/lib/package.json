@@ -1,18 +1,25 @@
 {
   "name": "mdt2json-ts",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Markdown Table to Minified JSON Transpiler",
   "main": "./dist/lib.js",
-  "files": ["dist", "src", "tests"],
+  "private": true,
+  "files": [
+    "dist",
+    "src",
+    "tests"
+  ],
   "dist": {
     "type": "module",
     "main": "./dist/lib.js",
     "module": "./dist/lib.js",
     "types": "./dist/lib.d.ts"
   },
+  "types": "./dist/lib.d.ts",
   "type": "module",
   "scripts": {
-    "cleanBuild": "rm -rf ./dist && tsc",
+    "cleanBuild": "rm -rf ../../dist/lib && tsc",
+    "cleanBuild:internal": "rm -rf ./dist && tsc --outDir ./dist",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --verbose  --config jest-unit.config.json"
   },
   "author": "Budi Syahiddin",
@@ -27,6 +34,7 @@
   },
   "dependencies": {
     "commander": "^11.0.0",
+    "mdt2json": "^0.2.0",
     "remark": "^14.0.3",
     "remark-gfm": "^3.0.1",
     "remark-parse": "^10.0.2",

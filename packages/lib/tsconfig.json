@@ -6,7 +6,7 @@
     "rootDir": "src",
     "moduleResolution": "Node",
     "declaration": true,
-    "outDir": "./dist",
+    "outDir": "../../dist/lib",
     "isolatedModules": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
