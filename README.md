@@ -35,6 +35,10 @@ const transpiler     = new MarkdownTable2Json({markdownString, layout: JsonLayou
 console.log(transpiler.transform());
 ```
 
+## Use Cases
+- Converting markdown tables to JSON for use in your web application
+- Improve token efficiency of your markdown files for use in retrieval augmented generation (RAG) architecure with LLMs (Large Language Models) such as GPT-3
+
 ## Library Internals
 This library works by parsing the markdown and getting the AST (Abstract Syntax Tree) of the markdown file. The AST is then traversed to find the tables in the markdown file. Once the tables are found, the tables are converted to JSON and returned.
 
