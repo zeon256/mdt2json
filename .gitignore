@@ -1,2 +1,4 @@
 dist
 node_modules
+packages/cli/dist
+packages/lib/dist
