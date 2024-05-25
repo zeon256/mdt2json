@@ -6,7 +6,7 @@ import terser from '@rollup/plugin-terser';
 export default {
     input: 'src/mdt2json.ts',
     output: {
-        file: '../../dist/cli/mdt2json.js', 
+        file: '../../dist/cli/mdt2json.cjs', 
         format: 'cjs',
         banner: '#!/usr/bin/env node',
         sourcemap: false

@@ -13,7 +13,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "mdt2json": "./dist/cli/mdt2json.js"
+    "mdt2json": "./dist/cli/mdt2json.cjs"
   },
   "files": [
     "dist"
