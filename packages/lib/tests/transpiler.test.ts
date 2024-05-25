@@ -1,5 +1,5 @@
-import fs from "fs";
-import { JsonLayout, MarkdownTable2Json } from "../src/lib";
+import fs from "node:fs";
+import { JsonLayout, MarkdownTable2Json } from "../src/mdt2json";
 
 describe("transpiler", () => {
 	// generate array of numbers from 1 to 1
@@ -28,7 +28,7 @@ describe("transpiler", () => {
 	});
 
 	it("simple tables soa", () => {
-		for(const {inMd, outSoA} of files) {
+		for (const { inMd, outSoA } of files) {
 			const transpilerSoA = new MarkdownTable2Json({
 				markdownString: inMd,
 				layout: JsonLayout.SoA,
@@ -36,6 +36,6 @@ describe("transpiler", () => {
 			});
 
 			expect(transpilerSoA.transform()).toBe(outSoA);
-		}		
+		}
 	});
 });

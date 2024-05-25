@@ -1,2 +1,5 @@
 dist
 node_modules
+packages/cli/dist
+packages/lib/dist
+packages/lib/.rollup.cache
