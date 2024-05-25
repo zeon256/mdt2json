@@ -4,15 +4,14 @@
   "description": "Markdown Table to Minified JSON Transpiler",
   "private": true,
   "files": [
-    "dist",
     "src",
     "tests"
   ],
   "dist": {
     "type": "module",
-    "main": "./dist/lib.js",
-    "module": "./dist/lib.js",
-    "types": "./dist/lib.d.ts"
+    "main": "../../dist/lib/mdt2json.js",
+    "module": "../../dist/lib/mdt2json.mjs",
+    "types": "../../dist/lib/mdt2json.d.ts"
   },
   "types": "./dist/lib.d.ts",
   "type": "module",

@@ -1,4 +1,3 @@
-// packages/cli/rollup.config.js
 import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
@@ -7,16 +6,16 @@ import terser from '@rollup/plugin-terser';
 export default {
     input: 'src/mdt2json.ts',
     output: {
-        file: '../../dist/cli/mdt2json.js',  // Adjust the output path to match your cleanBuild script
+        file: '../../dist/cli/mdt2json.js', 
         format: 'cjs',
         banner: '#!/usr/bin/env node',
-        sourcemap: true
+        sourcemap: false
     },
     plugins: [
         resolve({
-            modulePaths: ['../lib/src']
+            modulePaths: ['../../dist/lib/']
         }),
-        commonjs(),
+        commonjs({browser: false}),
         typescript({ tsconfig: './tsconfig.json' }),
 		terser()
     ],

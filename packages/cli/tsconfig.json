@@ -23,10 +23,7 @@
 		"removeComments": true,
 		"typeRoots": ["./src", "../../node_modules/@types", "../../dist/lib/"]
 	},
-
-	"references": [
-		{ "path": "../lib" }
-	],
+	"references": [{ "path": "../lib" }],
 	"exclude": ["tsconfig.json", "tsconfig-build.json", "tests"],
 	"ts-node": {
 		"esm": true

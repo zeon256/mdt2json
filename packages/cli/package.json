@@ -4,7 +4,6 @@
   "description": "Markdown Table to Minified JSON Transpiler CLI tool",
   "type": "module",
   "scripts": {
-    "cleanBuild": "rm -rf ../../dist/cli && tsc && chmod +x ../../dist/cli/main.js",
     "build": "rollup -c"
   },
   "dependencies": {
