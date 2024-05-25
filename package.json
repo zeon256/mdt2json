@@ -13,7 +13,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "mdt2json": "./dist/cli/main.js"
+    "mdt2json": "./dist/cli/mdt2json.js"
   },
   "files": [
     "dist"
@@ -34,9 +34,9 @@
     "packages/lib"
   ],
   "scripts": {
-    "build:cli": "npm run cleanBuild -w packages/cli && node ./shebangify.cjs ./dist/cli/main.js",
-    "build:lib": "npm run cleanBuild -w packages/lib",
-    "build:libInternal": "npm run cleanBuild:internal -w packages/lib",
+    "build:cli": "npm run build -w packages/cli",
+    "build:lib": "npm run build -w packages/lib",
+    "build:all": "npm run build:lib && npm run build:cli",
     "test:lib": "npm run test -w packages/lib"
   },
   "author": "Budi Syahiddin",
