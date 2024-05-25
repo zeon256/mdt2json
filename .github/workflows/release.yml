@@ -8,7 +8,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' # make sure it only run on main
+    # make sure it only run on main and ensure that it does not contain [skip ci] in the commit message    
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip ci]') 
     permissions:
       contents: write # to be able to publish a GitHub release
       issues: write # to be able to comment on released issues
