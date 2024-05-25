@@ -2,13 +2,14 @@
   "name": "mdt2json",
   "version": "1.0.4",
   "description": "Configurable Markdown Table to Minified JSON Transpiler",
-  "main": "./dist/lib/lib.js",
-  "types": "./dist/lib/lib.d.ts",
+  "main": "./dist/lib/mdt2json.js",
+  "types": "./dist/lib/mdt2json.d.ts",
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/lib/lib.d.ts",
-      "default": "./dist/lib/lib.js"
+      "types": "./dist/lib/mdt2json.d.ts",
+      "require": "./dist/lib/mdt2json.js",
+      "import": "./dist/lib/mdt2json.mjs"
     },
     "./package.json": "./package.json"
   },
