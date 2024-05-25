@@ -8,7 +8,7 @@
   "exports": {
     ".": {
       "types": "./dist/lib/mdt2json.d.ts",
-      "require": "./dist/lib/mdt2json.js",
+      "require": "./dist/lib/mdt2json.cjs",
       "import": "./dist/lib/mdt2json.mjs"
     },
     "./package.json": "./package.json"

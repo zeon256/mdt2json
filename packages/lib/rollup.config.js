@@ -6,7 +6,7 @@ export default {
     input: "src/mdt2json.ts",
     output: [
       {
-        file: "../../dist/lib/mdt2json.js",
+        file: "../../dist/lib/mdt2json.cjs",
         format: "cjs",
         sourcemap: true,
       },
