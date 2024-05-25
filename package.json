@@ -13,8 +13,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "mdt2json": "./dist/cli/main.js",
-    "shebangify": "./shebangify.js" 
+    "mdt2json": "./dist/cli/main.js"
   },
   "files": [
     "dist"
@@ -41,5 +40,13 @@
     "test:lib": "npm run test -w packages/lib"
   },
   "author": "Budi Syahiddin",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.8",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "rollup-plugin-dts": "^6.1.1",
+    "tslib": "^2.6.2"
+  }
 }
