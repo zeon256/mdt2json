@@ -30,12 +30,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
         
-        # need to build library first 
-      - name: Build Lib project
-        run: npm run build:libInternal && npm run build:lib
-
-      - name: Build CLI project
-        run: npm run build:cli
+      - name: Build all
+        run: npm run build:all
 
       - name: Run Library tests
         run: npm run test:lib
@@ -50,15 +46,15 @@ jobs:
             package.lock.json
             package.json
       
-      - name: Publish Library to NPM (dry run)
-        # Only run if the commit is tagged with release/v<version>
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}          
-        run: npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && npm publish --dry-run
+      # - name: Publish Library to NPM (dry run)
+      #   # Only run if the commit is tagged with v<version>
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}          
+      #   run: npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && npm publish --dry-run
       
-      - name: Publish Library to NPM
-        # Only run if the commit is tagged with release/v<version>
-        if: startsWith(github.ref, 'refs/tags/release/v')
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}          
-        run: npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && npm publish
+      # - name: Publish Library to NPM
+      #   # Only run if the commit is tagged with release/v<version>
+      #   if: startsWith(github.ref, 'refs/tags/v')
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}          
+      #   run: npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN && npm publish

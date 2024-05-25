@@ -2,7 +2,6 @@
   "name": "mdt2json-ts",
   "version": "0.2.0",
   "description": "Markdown Table to Minified JSON Transpiler",
-  "main": "./dist/lib.js",
   "private": true,
   "files": [
     "dist",
@@ -20,7 +19,8 @@
   "scripts": {
     "cleanBuild": "rm -rf ../../dist/lib && tsc",
     "cleanBuild:internal": "rm -rf ./dist && tsc --outDir ./dist",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --verbose  --config jest-unit.config.json"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --verbose  --config jest-unit.config.json",
+    "build": "rollup -c"
   },
   "author": "Budi Syahiddin",
   "license": "MIT",

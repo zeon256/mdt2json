@@ -1,6 +1,6 @@
 import { Command } from "commander";
-import { JsonLayout, MarkdownTable2Json } from "mdt2json-ts";
-import fs from "fs";
+import { JsonLayout, MarkdownTable2Json } from "mdt2json";
+import fs from "node:fs";
 
 (() => {
 	// use commander to parse args
@@ -47,6 +47,10 @@ import fs from "fs";
 	}
 
 	const layout = opts.layout === "SoA" ? JsonLayout.SoA : JsonLayout.AoS;
+
+	console.log(`[+] transpiling markdown tables to json using layout: ${layout}`);
+
+	// biome-ignore lint/complexity/noUselessTernary: <explanation>
 	const minify = opts.minify ? true : false;
 
 	// check if file or dir is provided

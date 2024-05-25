@@ -20,6 +20,7 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "removeComments": true,
+    "composite": true
   },
   "exclude": [
     "tsconfig.json",

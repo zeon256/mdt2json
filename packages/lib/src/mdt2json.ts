@@ -1,10 +1,10 @@
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkStringify from "remark-stringify";
-import { Processor, unified } from "unified";
-import { Node } from "unist";
-import { inspect } from "util";
-import { Text, InlineCode, Table } from "mdast";
+import { type Processor, unified } from "unified";
+import type { Node } from "unist";
+import { inspect } from "node:util";
+import type { Text, InlineCode, Table } from "mdast";
 
 export interface RemarkNode extends Node {
 	children?: Array<RemarkNode>;
@@ -139,6 +139,9 @@ export class MarkdownTable2Json {
 
 		node.visited = true;
 		callback?.(node);
-		node.children?.forEach((child) => this.dfs(child, callback));
+
+		for (const child of node.children ?? []) {
+			this.dfs(child, callback);
+		}
 	}
 }
