@@ -19,7 +19,7 @@
     "enabled": true,
     "formatWithErrors": false,
     "indentStyle": "tab",
-    "indentSize": 4,
+    "indentWidth": 4,
     "lineWidth": 120,
     "ignore": []
   }
