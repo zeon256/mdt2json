@@ -1,6 +1,6 @@
 {
   "name": "mdt2json",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Configurable Markdown Table to Minified JSON Transpiler",
   "main": "./dist/lib/mdt2json.js",
   "types": "./dist/lib/mdt2json.d.ts",
