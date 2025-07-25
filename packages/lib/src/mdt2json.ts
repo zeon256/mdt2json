@@ -4,7 +4,7 @@ import remarkStringify from "remark-stringify";
 import { type Processor, unified } from "unified";
 import type { Node } from "unist";
 import { inspect } from "node:util";
-import type { Text, InlineCode, Table } from "mdast";
+import type { Text, InlineCode, Table, HTML } from "mdast";
 
 export interface RemarkNode extends Node {
 	children?: Array<RemarkNode>;
@@ -20,19 +20,22 @@ export type TranspilerOpts = {
 	markdownString: string;
 	minify?: boolean;
 	layout?: JsonLayout;
+	includeHtml?: boolean;
 };
 
 export class MarkdownTable2Json {
 	private readonly buffer: Readonly<string>;
 	private readonly layout: JsonLayout;
 	private readonly minify: boolean;
+	private readonly includeHtml: boolean;
 	private readonly frozenProccesor: Processor<void, void, void, void>;
 	private readonly ast: RemarkNode;
 
-	public constructor({ markdownString, layout, minify }: TranspilerOpts) {
+	public constructor({ markdownString, layout, minify, includeHtml }: TranspilerOpts) {
 		this.buffer = markdownString;
 		this.layout = layout ?? JsonLayout.SoA;
 		this.minify = minify ?? true;
+		this.includeHtml = includeHtml ?? false;
 		this.frozenProccesor = unified().use(remarkParse).use(remarkGfm).use(remarkStringify);
 		this.ast = this.frozenProccesor.parse(this.buffer) as RemarkNode;
 	}
@@ -59,6 +62,7 @@ export class MarkdownTable2Json {
 
 		this.dfs(node, (n) => {
 			if (n.type === "text") buffer += (n as unknown as Text).value;
+			if (n.type === "html" && this.includeHtml) buffer += (n as unknown as HTML).value;
 			if (n.type === "inlineCode") buffer += `\`${(n as unknown as InlineCode).value}\``;
 		});
 
