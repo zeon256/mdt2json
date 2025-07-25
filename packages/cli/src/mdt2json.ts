@@ -13,6 +13,7 @@ import fs from "node:fs";
 		.option("-o, --out <out>", "output directory")
 		.option("-l, --layout <layout>", "layout of json output", "SoA")
 		.option("-m, --minify", "minify json output")
+		.option("--include-html", "include HTML content from table cells in output")
 		.parse(process.argv);
 
 	const opts = program.opts();
@@ -52,6 +53,8 @@ import fs from "node:fs";
 
 	// biome-ignore lint/complexity/noUselessTernary: <explanation>
 	const minify = opts.minify ? true : false;
+	// biome-ignore lint/complexity/noUselessTernary: <explanation>
+	const includeHtml = opts.includeHtml ? true : false;
 
 	// check if file or dir is provided
 	if (opts.file) {
@@ -62,6 +65,7 @@ import fs from "node:fs";
 				markdownString: fs.readFileSync(opts.file, { encoding: "utf-8" }),
 				layout,
 				minify,
+				includeHtml,
 			});
 			fs.writeFileSync(opts.outFile, transpiler.transform());
 		}
@@ -90,6 +94,7 @@ import fs from "node:fs";
 					markdownString,
 					layout,
 					minify,
+					includeHtml,
 				});
 				fs.writeFileSync(`${opts.out}/${outFile}`, transpiler.transform());
 			}
