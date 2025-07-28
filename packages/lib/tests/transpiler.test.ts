@@ -2,21 +2,12 @@ import fs from "node:fs";
 import { JsonLayout, MarkdownTable2Json } from "../src/mdt2json";
 
 describe("transpiler", () => {
-	// generate array of numbers from 1 to 1
-	const files = Array.from(Array(1).keys()).map((x) => {
-		const inMd = fs.readFileSync(`tests/sample/test${x + 1}_in.md`, { encoding: "utf-8" });
-		const outAoS = fs.readFileSync(`tests/sample/test${x + 1}aos_out.md`, { encoding: "utf-8" });
-		const outSoA = fs.readFileSync(`tests/sample/test${x + 1}soa_out.md`, { encoding: "utf-8" });
+	describe("simple tables", () => {
+		const inMd = fs.readFileSync("tests/sample/test1_in.md", { encoding: "utf-8" });
+		const outAoS = fs.readFileSync("tests/sample/test1aos_out.md", { encoding: "utf-8" });
+		const outSoA = fs.readFileSync("tests/sample/test1soa_out.md", { encoding: "utf-8" });
 
-		return {
-			inMd,
-			outAoS,
-			outSoA,
-		};
-	});
-
-	it("simple tables aos", () => {
-		for (const { inMd, outAoS } of files) {
+		it("simple tables aos", () => {
 			const transpiler = new MarkdownTable2Json({
 				markdownString: inMd,
 				layout: JsonLayout.AoS,
@@ -24,11 +15,9 @@ describe("transpiler", () => {
 			});
 
 			expect(transpiler.transform()).toBe(outAoS);
-		}
-	});
+		});
 
-	it("simple tables soa", () => {
-		for (const { inMd, outSoA } of files) {
+		it("simple tables soa", () => {
 			const transpilerSoA = new MarkdownTable2Json({
 				markdownString: inMd,
 				layout: JsonLayout.SoA,
@@ -36,6 +25,34 @@ describe("transpiler", () => {
 			});
 
 			expect(transpilerSoA.transform()).toBe(outSoA);
-		}
+		});
+	});
+
+	describe("include html", () => {
+		const inMd = fs.readFileSync("tests/sample/test2_html_in.md", { encoding: "utf-8" });
+
+		it("enabled", () => {
+			const out = fs.readFileSync("tests/sample/test2_html_out_enabled.md", { encoding: "utf-8" });
+
+			const transpiler = new MarkdownTable2Json({
+				markdownString: inMd,
+				minify: false,
+				includeHtml: true,
+			});
+
+			expect(transpiler.transform()).toBe(out);
+		});
+
+		it("disabled", () => {
+			const out = fs.readFileSync("tests/sample/test2_html_out_disabled.md", { encoding: "utf-8" });
+
+			const transpiler = new MarkdownTable2Json({
+				markdownString: inMd,
+				minify: false,
+				includeHtml: false,
+			});
+
+			expect(transpiler.transform()).toBe(out);
+		});
 	});
 });
