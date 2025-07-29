@@ -30,7 +30,7 @@ jobs:
       - name: Run Library tests
         run: npm run test:lib
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: release-artifact
           path: |
@@ -67,12 +67,12 @@ jobs:
       - name: Install dependencies
         run: npm install -g semantic-release @semantic-release/git @semantic-release/changelog @semantic-release/exec @semantic-release/npm
       - name: Download artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: release-artifact
           path: .
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_CI }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
