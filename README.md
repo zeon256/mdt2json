@@ -1,6 +1,8 @@
 # mdtable2json
 > mdtable2json is a TypeScript library and CLI tool that allows you to transpile tables in your markdown file to minified JSON. With mdtable2json, you can easily convert your markdown table data into a structured JSON format.
 
+![NPM Version](https://img.shields.io/npm/v/mdt2json)
+
 ## Features
 - ESModule support
 - Convert markdown tables to JSON
